@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Probando Firebase!!!</h1>
-    
-    <h3>Crear usuario - Firestore</h3>
-    <button id="crear">Crear usuario</button>
 
+    <h2>Mi album de fotos - Firestore</h2>
+
+    <button id="create">Create</button>
+    <button id="read-all">Read All</button>
+    <button id="read-one">Find One by Id</button>
+    <button id="delete">Delete</button>
+    <button id="clean">Clean</button>
+
+    <section id="album">
+
+    </section>
+
+    <h2>Firebase Authentication</h2>
     <h3>Formulario de Registro</h3>
     <form id ="form1" action="#" method="POST">
         <label for="email">Email:</label><br>
@@ -34,8 +46,8 @@
     </form>
 
     <h3>Logout</h3>
-    <button id="salir">Para salir a comer</button>
-    
+    <button id="salir">Logout</button>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
 
@@ -44,6 +56,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
 
-    <script src="script.js"></script>
+     <script src="./script.js"></script>
+     
+   
 </body>
+
 </html>
