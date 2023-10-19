@@ -121,7 +121,7 @@ document.getElementById('clean').addEventListener('click', () => {
   cleanAlbum();
 });
 
-//********FIREBASE AUTH******
+//********FIRESTORE USERS COLLECTION******
 
 const createUser = (user) => {
   db.collection("users")
@@ -130,7 +130,7 @@ const createUser = (user) => {
     .catch((error) => console.error("Error adding document: ", error));
 };
 
-const readAllUsers = (born) => {
+/* const readAllUsers = (born) => {
   db.collection("users")
     .where("first", "==", born)
     .get()
@@ -139,8 +139,7 @@ const readAllUsers = (born) => {
         console.log(doc.data());
       });
     });
-};
-//readAllUsers(1224)
+}; */
 
 // Read ONE
 function readOne(id) {
@@ -159,7 +158,6 @@ function readOne(id) {
       console.log("Error getting document:", error);
     });
 }
-//readOne("690WYQfTZUoEFnq5q1Ov");
 
 /**************Firebase Auth*****************/
 
@@ -173,7 +171,7 @@ const signUpUser = (email, password) => {
       console.log(`se ha registrado ${user.email} ID:${user.uid}`)
       alert(`se ha registrado ${user.email} ID:${user.uid}`)
       // ...
-      // Guarda El usuario en Firestore
+      // Saves user in firestore
       createUser({
         id: user.uid,
         email: user.email,
@@ -182,13 +180,10 @@ const signUpUser = (email, password) => {
 
     })
     .catch((error) => {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      console.log("Error en el sistema" + error.message);
+      console.log("Error en el sistema" + error.message, "Error: "+error.code);
     });
 };
 
-//"alex@demo.com","123456"
 
 document.getElementById("form1").addEventListener("submit", function (event) {
   event.preventDefault();

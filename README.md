@@ -73,9 +73,10 @@ Existe un escuchador de eventos para manejar persistencia del login, es decir qu
     - Click en _Authentication_
     - Click en _get started/Comenzar_
     - Seleccionar la forma de autenticación, para nuestro proyecto elegiremos Email/Password
-    - Habilitamos _Email/Password_, dejamos deshabilitado Email link
+    - Habilitamos _Email/Password_, dejamos deshabilitado Email link [1]
     - Click _Save/Guardar_
 
+[1]: Si tienes instalada la extensión de CORS, asegurate de que esté deshabilitada. 
 
 ## Implementar Firebase en nuestro proyecto
 1. Obtener el objeto de configuración de Firebase de nuestra app
