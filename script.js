@@ -8,6 +8,8 @@ const db = firebase.firestore();// db representa mi BBDD //inicia Firestore
 
 //Función auxiliar para pintar una foto en el album
 const printPhoto = (title, url, docId) => {
+  let card = document.createElement('article');
+  card.setAttribute('class', 'card');
   let picture = document.createElement('img');
   picture.setAttribute('src', url);
   picture.setAttribute('style', 'max-width:250px');
@@ -16,10 +18,11 @@ const printPhoto = (title, url, docId) => {
   let id = document.createElement('p');
   id.innerHTML = docId;
   const album = document.getElementById('album');
-  album.appendChild(picture);
-  album.appendChild(caption);
-  album.appendChild(id);
-}; 
+  card.appendChild(picture);
+  card.appendChild(caption);
+  card.appendChild(id);
+  album.appendChild(card);
+};
 
 //Create
 const createPicture = (picture) => {
@@ -34,6 +37,10 @@ const createPicture = (picture) => {
 
 //Read all
 const readAll = () => {
+  // Limpia el album para mostrar el resultado
+  cleanAlbum();
+
+  //Petición a Firestore para leer todos los documentos de la colección album
   db.collection("album")
     .get()
     .then((querySnapshot) => {
@@ -43,24 +50,6 @@ const readAll = () => {
 
     })
     .catch(() => console.log('Error reading documents'));;
-};
-
-//Read one
-function readOne(id) {
-  db.collection("album")
-    .doc(id)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-        printPhoto(doc.data().title, doc.data().url, doc.id);
-      } else {
-        console.log("No such document!");
-      }
-    })
-    .catch((error) => {
-      console.log("Error getting document:", error);
-    });
 };
 
 //Delete
@@ -143,20 +132,24 @@ const createUser = (user) => {
 
 // Read ONE
 function readOne(id) {
-  db.collection("users")
-    .doc(id)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    })
-    .catch((error) => {
-      console.log("Error getting document:", error);
-    });
+  // Limpia el album para mostrar el resultado
+  cleanAlbum();
+
+  //Petición a Firestore para leer un documento de la colección album 
+  var docRef = db.collection("album").doc(id);
+
+  docRef.get().then((doc) => {
+    if (doc.exists) {
+      console.log("Document data:", doc.data());
+      printPhoto(doc.data().title, doc.data().url, doc.id);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch((error) => {
+    console.log("Error getting document:", error);
+  });
+
 }
 
 /**************Firebase Auth*****************/
@@ -175,12 +168,12 @@ const signUpUser = (email, password) => {
       createUser({
         id: user.uid,
         email: user.email,
-        message:"hola!"
+        message: "hola!"
       });
 
     })
     .catch((error) => {
-      console.log("Error en el sistema" + error.message, "Error: "+error.code);
+      console.log("Error en el sistema" + error.message, "Error: " + error.code);
     });
 };
 
