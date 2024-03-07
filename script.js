@@ -1,5 +1,4 @@
 let firebaseConfig = { //objeto de configuración de Firebase
-
 };
 
 firebase.initializeApp(firebaseConfig);// Inicializaar app Firebase
@@ -154,6 +153,8 @@ function readOne(id) {
 
 /**************Firebase Auth*****************/
 
+/*
+
 const signUpUser = (email, password) => {
   firebase
     .auth()
@@ -234,5 +235,5 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
-
+*/
 
