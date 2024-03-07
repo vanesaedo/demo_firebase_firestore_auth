@@ -89,6 +89,12 @@ Existe un escuchador de eventos para manejar persistencia del login, es decir qu
 
 2. En nuestro script.js pegamos nuestro objeto _FirebaseConfig_ en la primera linea.
 
+Notas mías: 
+
+db representa todas las acciones sobre la base de datos
+
+vamos a utilizar firestore
+
 
 
 

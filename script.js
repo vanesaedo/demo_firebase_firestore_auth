@@ -1,5 +1,14 @@
-let firebaseConfig = { //objeto de configuración de Firebase
+//objeto de configuración de Firebase. Tomado del apartado agregar SDK(Software Development Kit) en Firebase.
+const firebaseConfig = {
+  apiKey: "AIzaSyAnoJFIFv1d0YohPNtNePO0uw4fSPCRpBE",
+  authDomain: "firstfireproject-b9886.firebaseapp.com",
+  projectId: "firstfireproject-b9886",
+  storageBucket: "firstfireproject-b9886.appspot.com",
+  messagingSenderId: "27525056117",
+  appId: "1:27525056117:web:19b120e62bfdd7c52b5a3c",
+  measurementId: "G-SXREYE2HJ9"
 };
+
 
 firebase.initializeApp(firebaseConfig);// Inicializaar app Firebase
 
@@ -23,7 +32,7 @@ const printPhoto = (title, url, docId) => {
   album.appendChild(card);
 };
 
-//Create
+//Create (crea el objeto en la base de datos)
 const createPicture = (picture) => {
   db.collection("album")
     .add(picture)
